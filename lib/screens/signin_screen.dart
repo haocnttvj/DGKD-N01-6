@@ -1,6 +1,6 @@
-import 'package:billpay1/screens/reset_password.dart';
-import 'package:billpay1/screens/signup_screen.dart';
-import 'package:billpay1/utils/color_utils.dart';
+import 'reset_password.dart';
+import 'signup_screen.dart';
+import '../utils/color_utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -55,10 +55,13 @@ class _SignInScreenState extends State<SignInScreen> {
                 height: 20,
               ),
               signInSignUpButton(context, true, () {
-                FirebaseAuth.instance.signInWithEmailAndPassword(
-                    email: _emailTextController.text,
-                    password: _passwordTextController.text).then((value) {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+                FirebaseAuth.instance
+                    .signInWithEmailAndPassword(
+                        email: _emailTextController.text,
+                        password: _passwordTextController.text)
+                    .then((value) {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomeScreen()));
                 });
               }),
               signUpOption(),
@@ -87,8 +90,8 @@ class _SignInScreenState extends State<SignInScreen> {
         ),
       ],
     );
-
   }
+
   Widget forgetPassword(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
