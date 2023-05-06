@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "138108337803",
+    "project_id": "signin-example-fa02f",
+    "storage_bucket": "signin-example-fa02f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:138108337803:android:9b7f49e027df585e65de8e",
+        "android_client_info": {
+          "package_name": "com.example.billpay1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "138108337803-6q1hefukbq766dr6msvjijlts86tg0n8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.billpay1",
+            "certificate_hash": "037ac1b15a93e684dfb6727e56ebae7d43b3ac84"
+          }
+        },
+        {
+          "client_id": "138108337803-4jbkehmhm0omqioj82n94rgl1i6fpcb1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFhxZB9hF5-oeGippUJJaZ0U7g3KD386g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "138108337803-4jbkehmhm0omqioj82n94rgl1i6fpcb1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
