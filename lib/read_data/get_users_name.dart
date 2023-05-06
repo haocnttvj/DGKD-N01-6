@@ -33,7 +33,6 @@ class GetUserName extends StatelessWidget {
                 ),
               ],
             );
-            ;
           }
           return Text('loading');
         }));
