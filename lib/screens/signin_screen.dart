@@ -1,11 +1,13 @@
-import 'reset_password.dart';
-import 'signup_screen.dart';
-import '../utils/color_utils.dart';
+import 'package:billpay1/screens/AdminPage.dart';
+import 'package:billpay1/screens/reset_password.dart';
+import 'package:billpay1/screens/signup_screen.dart';
+import 'package:billpay1/utils/color_utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../reusable_widgets/reusable_widget.dart';
 import 'HomeScreen.dart';
+import 'express.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -37,7 +39,7 @@ class _SignInScreenState extends State<SignInScreen> {
           child: Column(
             children: <Widget>[
               logoWidget("assets/images/logo1.png"),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               reusableTextField("Enter UserName", Icons.person_outline, false,
@@ -51,7 +53,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 height: 5,
               ),
               forgetPassword(context),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               signInSignUpButton(context, true, () {
@@ -61,7 +63,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         password: _passwordTextController.text)
                     .then((value) {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HomeScreen()));
+                      MaterialPageRoute(builder: (context) => const HomeScreenz()));
                 });
               }),
               signUpOption(),
@@ -81,7 +83,7 @@ class _SignInScreenState extends State<SignInScreen> {
         GestureDetector(
           onTap: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => SignUpScreen()));
+                MaterialPageRoute(builder: (context) => const SignUpScreen()));
           },
           child: const Text(
             "Sing Up",
@@ -104,7 +106,7 @@ class _SignInScreenState extends State<SignInScreen> {
           textAlign: TextAlign.right,
         ),
         onPressed: () => Navigator.push(
-            context, MaterialPageRoute(builder: (context) => ResetPassword())),
+            context, MaterialPageRoute(builder: (context) => const ResetPassword())),
       ),
     );
   }

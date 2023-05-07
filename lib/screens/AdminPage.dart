@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_interpolation_to_compose_strings
 
 import '../read_data//get_users_name.dart';
+import 'HomeScreen.dart';
 import 'signin_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -8,14 +9,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class AdminPage extends StatefulWidget {
+  const AdminPage({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<AdminPage> createState() => _AdminPageState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _AdminPageState extends State<AdminPage> {
   final user = FirebaseAuth.instance.currentUser!;
   late Stream<QuerySnapshot> _userStream;
 
@@ -39,7 +40,23 @@ class _HomeScreenState extends State<HomeScreen> {
             onTap: () {
               FirebaseAuth.instance.signOut();
             },
-            child: Icon(Icons.logout),
+            child: Icon(Icons.oil_barrel),
+          ),
+          ElevatedButton.icon(
+
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomeScreenz()));
+            },
+            icon: Icon(
+              // <-- Icon
+              Icons.logout,
+              size: 24.0,
+            ),
+            label: Text('Exit'),
+
+
+            // <-- Text
           ),
         ],
       ),
@@ -73,6 +90,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 );
               },
             );
+
+
           },
         ),
       ),

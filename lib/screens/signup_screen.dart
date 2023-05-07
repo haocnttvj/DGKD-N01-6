@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../reusable_widgets/reusable_widget.dart';
 import '../utils/color_utils.dart';
 import 'HomeScreen.dart';
+import 'express.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -41,6 +42,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               child: Padding(
             padding: EdgeInsets.fromLTRB(20, 120, 20, 0),
             child: Column(
+
               children: <Widget>[
                 const SizedBox(
                   height: 20,
@@ -68,7 +70,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       .then((value) {
                     print("Created New Account ");
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomeScreen()));
+                        MaterialPageRoute(builder: (context) => HomeScreenz()));
                   }).onError((error, stackTrace) {
                     print("Error ${error.toString()}");
                   });
