@@ -6,6 +6,7 @@ class GetUserName extends StatelessWidget {
 
   GetUserName({required this.documentID});
 
+
   @override
   Widget build(BuildContext context) {
     CollectionReference users = FirebaseFirestore.instance.collection('users');
@@ -20,6 +21,14 @@ class GetUserName extends StatelessWidget {
             List<dynamic> numbers = data['month'];
             List<int> number = numbers.map((e) => e as int).toList();
             int cur_number = number[now] - number[now - 1];
+            int num=0;
+            if(cur_number<100){
+              num=cur_number*3500;
+            }
+            else {
+              num=cur_number*4000;
+
+            };
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -31,8 +40,15 @@ class GetUserName extends StatelessWidget {
                   'Số điện tháng ${now}: $cur_number',
                   style: TextStyle(fontSize: 14),
                 ),
+                Text(
+                  'Số tiền phải tra điện tháng ${now}: ${num}',
+                  style: TextStyle(fontSize: 14),
+                ),
+
               ],
             );
+
+
           }
           return Text('loading');
         }));

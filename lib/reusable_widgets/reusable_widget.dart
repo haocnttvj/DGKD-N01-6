@@ -4,9 +4,10 @@ Image logoWidget(String imageName) {
   return Image.asset(
     imageName,
     fit: BoxFit.fitWidth,
-    width: 600,
-    height: 300,
+    width: 400,
+    height: 150,
     color: Colors.white,
+
   );
 }
 
