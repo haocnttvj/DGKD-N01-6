@@ -4,6 +4,7 @@ import '../reusable_widgets/reusable_widget.dart';
 import '../utils/color_utils.dart';
 import 'HomeScreen.dart';
 import 'express.dart';
+import 'homenew.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -70,7 +71,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       .then((value) {
                     print("Created New Account ");
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomeScreenz()));
+                        MaterialPageRoute(builder: (context) => HomeScreenr(userName: "Ten nguoi dung", userImageUrl: "https://i.ytimg.com/vi/1l_YadQTg5Q/maxresdefault.jpg",)));
                   }).onError((error, stackTrace) {
                     print("Error ${error.toString()}");
                   });

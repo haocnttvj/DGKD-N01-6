@@ -2,6 +2,7 @@
 
 import '../read_data//get_users_name.dart';
 import 'HomeScreen.dart';
+import 'homenew.dart';
 import 'signin_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +47,7 @@ class _AdminPageState extends State<AdminPage> {
 
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomeScreenz()));
+                  MaterialPageRoute(builder: (context) => HomeScreenr(userName: "Hoang Quy Hao", userImageUrl: "https://i.ytimg.com/vi/1l_YadQTg5Q/maxresdefault.jpg",)));
             },
             icon: Icon(
               // <-- Icon
@@ -54,7 +55,6 @@ class _AdminPageState extends State<AdminPage> {
               size: 24.0,
             ),
             label: Text('Exit'),
-
 
             // <-- Text
           ),
