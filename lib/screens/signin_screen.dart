@@ -1,4 +1,5 @@
 import 'package:billpay1/screens/AdminPage.dart';
+import 'package:billpay1/screens/homenew.dart';
 import 'package:billpay1/screens/reset_password.dart';
 import 'package:billpay1/screens/signup_screen.dart';
 import 'package:billpay1/utils/color_utils.dart';
@@ -63,7 +64,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         password: _passwordTextController.text)
                     .then((value) {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const HomeScreenz()));
+                      MaterialPageRoute(builder: (context) => HomeScreenr(userName: 'hoangquyhaook@gmail.com', userImageUrl: "https://i.ytimg.com/vi/1l_YadQTg5Q/maxresdefault.jpg",)));
                 });
               }),
               signUpOption(),
