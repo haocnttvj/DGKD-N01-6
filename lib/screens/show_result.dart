@@ -1,14 +1,14 @@
-import 'package:billpay1/screens/calculate_bill.dart';
+import 'package:billpay1/screens/BillPaymentScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class ElectricityBillCalculator extends StatefulWidget {
   @override
-  _ElectricityBillCalculatorState createState() => _ElectricityBillCalculatorState();
+  _ElectricityBillCalculatorState createState() =>
+      _ElectricityBillCalculatorState();
 }
 
 class _ElectricityBillCalculatorState extends State<ElectricityBillCalculator> {
-
   final TextEditingController _usageController = TextEditingController();
   double _usage = 0;
   double _billAmount = 0;
@@ -18,7 +18,8 @@ class _ElectricityBillCalculatorState extends State<ElectricityBillCalculator> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text('Bill Calculation'),
-          content: Text('Your bill amount is ${_billAmount.toStringAsFixed(2)} VND'),
+          content:
+              Text('Your bill amount is ${_billAmount.toStringAsFixed(2)} VND'),
           actions: [
             TextButton(
               onPressed: () {
@@ -42,21 +43,26 @@ class _ElectricityBillCalculatorState extends State<ElectricityBillCalculator> {
         padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[TextField(
-            controller: _usageController,
-            keyboardType: TextInputType.number,
-            inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))],
-            decoration: InputDecoration(
-              labelText: 'Monthly Usage (kWh)',
-              helperText: _usageController.text.isEmpty ? 'Please enter only numbers' : '',
-              helperStyle: TextStyle(color: Colors.red),
+          children: <Widget>[
+            TextField(
+              controller: _usageController,
+              keyboardType: TextInputType.number,
+              inputFormatters: [
+                FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))
+              ],
+              decoration: InputDecoration(
+                labelText: 'Monthly Usage (kWh)',
+                helperText: _usageController.text.isEmpty
+                    ? 'Please enter only numbers'
+                    : '',
+                helperStyle: TextStyle(color: Colors.red),
+              ),
+              onChanged: (value) {
+                setState(() {
+                  _usage = double.tryParse(value) ?? 0;
+                });
+              },
             ),
-            onChanged: (value) {
-              setState(() {
-                _usage = double.tryParse(value) ?? 0;
-              });
-            },
-          ),
             SizedBox(height: 16.0),
             Text(
               'Bill Amount: \ ${_billAmount.toStringAsFixed(2)}\VND',
@@ -69,12 +75,16 @@ class _ElectricityBillCalculatorState extends State<ElectricityBillCalculator> {
                 setState(() {
                   _billAmount = _calculateBillAmount(_usage);
                 });
-                _showDialog(context); // Call the function to show the dialog box
+                _showDialog(
+                    context); // Call the function to show the dialog box
               },
             ),
             ElevatedButton.icon(
               onPressed: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (context) =>BillPaymentScreen(billAmount: 220000))),
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          BillPaymentScreen(billAmount: 200))),
               icon: Icon(
                 // <-- Icon
                 Icons.contact_mail,
@@ -88,7 +98,6 @@ class _ElectricityBillCalculatorState extends State<ElectricityBillCalculator> {
     );
   }
 
-
   double _calculateBillAmount(double usage) {
     if (usage <= 200) {
       return usage * 3500;
@@ -100,5 +109,4 @@ class _ElectricityBillCalculatorState extends State<ElectricityBillCalculator> {
       return 200 * 3500 + 100 * 4000 + 200 * 4500 + (usage - 500) * 5000;
     }
   }
-
 }

@@ -1,5 +1,5 @@
 import 'package:billpay1/screens/AdminPage.dart';
-import 'package:billpay1/screens/homenew.dart';
+import 'package:billpay1/screens/HomeScreen.dart';
 import 'package:billpay1/screens/reset_password.dart';
 import 'package:billpay1/screens/signup_screen.dart';
 import 'package:billpay1/utils/color_utils.dart';
@@ -7,8 +7,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../reusable_widgets/reusable_widget.dart';
-import 'HomeScreen.dart';
-import 'express.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -63,8 +61,14 @@ class _SignInScreenState extends State<SignInScreen> {
                         email: _emailTextController.text,
                         password: _passwordTextController.text)
                     .then((value) {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HomeScreenr(userName: 'hoangquyhaook@gmail.com', userImageUrl: "https://i.ytimg.com/vi/1l_YadQTg5Q/maxresdefault.jpg",)));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => HomeScreen(
+                                userName: '${_emailTextController.text}',
+                                userImageUrl:
+                                    "https://i.ytimg.com/vi/1l_YadQTg5Q/maxresdefault.jpg",
+                              )));
                 });
               }),
               signUpOption(),
@@ -79,7 +83,7 @@ class _SignInScreenState extends State<SignInScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text("Don'n have account ?",
+        const Text("Don't have account ?",
             style: TextStyle(color: Colors.white70)),
         GestureDetector(
           onTap: () {
@@ -87,7 +91,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 MaterialPageRoute(builder: (context) => const SignUpScreen()));
           },
           child: const Text(
-            "Sing Up",
+            "Sign Up",
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
         ),
@@ -106,8 +110,8 @@ class _SignInScreenState extends State<SignInScreen> {
           style: TextStyle(color: Colors.white70),
           textAlign: TextAlign.right,
         ),
-        onPressed: () => Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const ResetPassword())),
+        onPressed: () => Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const ResetPassword())),
       ),
     );
   }

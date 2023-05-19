@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import '../constant/constant.dart';
 
-class HomeScreeny extends StatefulWidget {
+class BillScreen extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _BillScreenState createState() => _BillScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreeny> {
-  double _totalBill = 0.0;
+class _BillScreenState extends State<BillScreen> {
   TextEditingController _billController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    double _totalBill = 0.0;
     return Scaffold(
       appBar: AppBar(
         title: Text('Bill Calculator'),
@@ -28,7 +29,6 @@ class _HomeScreenState extends State<HomeScreeny> {
               ),
             ),
             SizedBox(height: 16.0),
-
             ElevatedButton(
               child: Text('Add Bill'),
               onPressed: () {

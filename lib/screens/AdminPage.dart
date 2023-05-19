@@ -1,14 +1,13 @@
 // ignore_for_file: prefer_const_constructors, prefer_interpolation_to_compose_strings
 
 import '../read_data//get_users_name.dart';
+// import '../read_data/email_sender.dart';
 import 'HomeScreen.dart';
-import 'homenew.dart';
+import '../read_data/send_email.dart';
 import 'signin_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mailer/mailer.dart';
-import 'package:mailer/smtp_server.dart';
 
 class AdminPage extends StatefulWidget {
   const AdminPage({Key? key}) : super(key: key);
@@ -44,10 +43,15 @@ class _AdminPageState extends State<AdminPage> {
             child: Icon(Icons.oil_barrel),
           ),
           ElevatedButton.icon(
-
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomeScreenr(userName: "Hoang Quy Hao", userImageUrl: "https://i.ytimg.com/vi/1l_YadQTg5Q/maxresdefault.jpg",)));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => HomeScreen(
+                            userName: "${user.email}",
+                            userImageUrl:
+                                "https://i.ytimg.com/vi/1l_YadQTg5Q/maxresdefault.jpg",
+                          )));
             },
             icon: Icon(
               // <-- Icon
@@ -83,39 +87,16 @@ class _AdminPageState extends State<AdminPage> {
                     title: GetUserName(documentID: data[index].id),
                     tileColor: Colors.grey[200],
                     trailing: TextButton(
-                      onPressed: sendEmail,
+                      onPressed: () => sendEmail(data[index].get('email')),
                       child: Text('Send Email'),
                     ),
                   ),
                 );
               },
             );
-
-
           },
         ),
       ),
     );
-  }
-
-  void sendEmail() async {
-    final smtpServer = gmail('username', 'password');
-
-    final message = Message()
-      ..from = Address('your_email_address@example.com')
-      ..recipients.add('recipient1@example.com')
-      ..ccRecipients
-          .addAll(['recipient2@example.com', 'recipient3@example.com'])
-      ..bccRecipients.add(Address('bccAddress@example.com'))
-      ..subject = 'Test Email'
-      ..text =
-          'This is a test email sent from Flutter using the mailer package.';
-
-    try {
-      final sendReport = await send(message, smtpServer);
-      print('Message sent: ' + sendReport.toString());
-    } on MailerException catch (e) {
-      print('Message not sent. Error: $e');
-    }
   }
 }
